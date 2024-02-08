@@ -1,0 +1,53 @@
+// @media (min-width: 601px) and (max-width: 1023px) {
+//     .wp-block-navigation__responsive-container-open:not(.always-shown) {
+//         display: block;
+//     }
+// }
+// @media (max-width: 1023px) {
+//     .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+//         display: none;
+//     }
+// }
+// .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-icon {
+//     display: inline;
+// }
+// .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open {
+//     background-color: var(--wp--preset--color--blue-dk);
+//     color: #ffffff;
+//     left: unset;
+// }
+.header {
+    li.wp-block-navigation-item.wp-block-navigation-link {
+        color: var(--wp--preset--color--blue-dk);
+        font-weight: 700;
+        &:hover {
+            color: var(--wp--preset--color--green);
+        }
+    }
+    .wp-block-navigation__responsive-container {
+        a.wp-block-navigation-item__content,
+        a span.wp-block-navigation-item__label,
+        .wp-block-navigation-item a {
+            margin-right: 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--wp--preset--color--white);
+            &:hover {
+                color: #ede29f;
+            }
+        }
+        .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .has-child .wp-block-navigation__submenu-container {
+            padding-right: 0 !important;
+        }
+        .wp-block-navigation__submenu-container {
+            span.wp-block-navigation-item__label {
+                color: var(--wp--preset--color--blue-lt);
+                font-size: 16px;
+                padding-bottom: 0.5rem;
+            }
+        }
+        .wp-block-navigation-item__content:hover, .header a.wp-block-button__link.wp-element-button:hover {
+            color: var(--wp--preset--color--green-lt);
+        }
+    }
+}

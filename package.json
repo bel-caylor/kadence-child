@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "node-sass": "^9.0.0"
+  },
+  "name": "kadence-child",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass1": "node-sass scss/style.scss style.css -w",
+    "sass": "node-sass scss/ -o . --output-style compressed --watch"
+  },
+  "keywords": [],
+  "author": "Belinda Caylor",
+  "license": "ISC",
+  "description": "HopeChurch Kadence Child"
+}
