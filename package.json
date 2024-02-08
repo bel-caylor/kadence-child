@@ -7,8 +7,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass1": "node-sass scss/style.scss style.css -w",
-    "sass": "node-sass scss/ -o . --output-style compressed --watch"
+    "sass": "node-sass scss/style.scss style.css -w"
   },
   "keywords": [],
   "author": "Belinda Caylor",

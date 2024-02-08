@@ -1,0 +1,30 @@
+body {
+    --global-kb-spacing-5xl: var(--wp--preset--spacing--112);
+    --global-kb-spacing-4xl: var(--wp--preset--spacing--80);
+    --global-kb-spacing-3xl: var(--wp--preset--spacing--64);
+    --global-kb-spacing-xxl: var(--wp--preset--spacing--40);
+    --global-kb-spacing-xl: var(--wp--preset--spacing--32);
+    --global-kb-spacing-lg: var(--wp--preset--spacing--24);
+    --global-kb-spacing-md: var(--wp--preset--spacing--20);
+    --global-kb-spacing-sm: var(--wp--preset--spacing--16);
+    --global-kb-spacing-xs: var(--wp--preset--spacing--12);
+    --global-kb-spacing-xxs: var(--wp--preset--spacing--8);
+
+    --global-kb-gap-lg: var(--wp--preset--spacing--112);
+    --global-kb-gap-md: var(--wp--preset--spacing--40);
+    --global-kb-gap-xs: var(--wp--preset--spacing--16);
+    --global-row-gutter-lg: var(--wp--preset--spacing--40);
+    --global-row-gutter-md: var(--wp--preset--spacing--32);
+    --global-row-gutter-sm: var(--wp--preset--spacing--16);
+
+    
+    --global-kb-font-size-sm: var(--wp--preset--font-size--small);
+    --global-kb-font-size-md: var(--wp--preset--font-size--medium);
+    --global-kb-font-size-lg: var(--wp--preset--font-size--2-xl);
+    --global-kb-font-size-xl: var(--wp--preset--font-size--3-xl);
+    --global-kb-font-size-xxl: var(--wp--preset--font-size--4-xl);
+    --global-kb-font-size-xxxl: var(--wp--preset--font-size--6-xl);
+}
+body p, input, selec, optgroup, textarea {
+    font-size: var(--wp--preset--font-size--large);
+}
