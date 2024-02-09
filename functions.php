@@ -76,8 +76,8 @@ add_action( 'after_setup_theme', 'HOPE_setup' );
  * Enqueue scripts and styles.
  */
 function HOPE_scripts() {
-	wp_enqueue_style( 'hope-style', get_stylesheet_uri(), array(), HOPE_VERSION );
-	wp_enqueue_style( 'hope-style', get_stylesheet_uri(), array(), filemtime( get_template_directory() . '/style.css' ) ); // Main theme styles
+	// wp_enqueue_style( 'hope-style', get_stylesheet_uri(), array(), HOPE_VERSION );
+	// wp_enqueue_style( 'hope-style', get_stylesheet_uri(), array(), filemtime( get_template_directory() . '/style.css' ) ); // Main theme styles
 
 	wp_enqueue_style( 'open-sans', 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap', array(), null, 'all' ); // Google Font.
 	wp_enqueue_style( 'vollkorn', 'https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,700;1,400&display=swap', array(), null, 'all' ); // Google Font.
@@ -91,3 +91,11 @@ function enqueue_child_theme_styles() {
     wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style'));
 }
 add_action('wp_enqueue_scripts', 'enqueue_child_theme_styles');
+
+/**
+ * Add Reuseable Blocks button to admin toolbar.
+ */
+function be_reusable_blocks_admin_menu() {
+    add_menu_page( 'Reusable Blocks', 'Reusable Blocks', 'edit_posts', 'edit.php?post_type=wp_block', '', 'dashicons-editor-table', 22 );
+}
+add_action( 'admin_menu', 'be_reusable_blocks_admin_menu' );

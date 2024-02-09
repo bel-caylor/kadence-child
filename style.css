@@ -3,7 +3,7 @@
  Description: Child theme for Kadence
  Author: Belinda Caylor
  Template: kadence
- Version: 1.0.2
+ Version: 1.0.5
  */
 body {
   --global-kb-spacing-5xl: var(--wp--preset--spacing--112);
@@ -39,15 +39,16 @@ body p, input, selec, optgroup, textarea {
   bottom: unset;
   left: unset; }
 
-.header .wp-block-site-logo {
-  max-width: 50vw; }
+@media (max-width: 947px) {
+  .header.header-mobile .wp-block-site-logo {
+    max-width: 150px; } }
 
-@media (min-width: 835px) and (max-width: 1075px) {
+@media (min-width: 946px) and (max-width: 1075px) {
   .header ul.wp-block-navigation__container {
-    gap: 30px;
+    gap: 1rem;
     padding-block: 10px; } }
 
-@media (min-width: 600px) and (max-width: 835px) {
+@media (min-width: 600px) and (max-width: 947px) {
   .header .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) .wp-block-navigation__responsive-container-close {
     display: block; } }
 
@@ -58,7 +59,7 @@ body p, input, selec, optgroup, textarea {
   gap: 0; }
 
 .header .wp-block-navigation__container {
-  gap: 2rem !important; }
+  gap: 2rem; }
   .header .wp-block-navigation__container > .wp-block-navigation-item {
     padding-right: 30px; }
 
