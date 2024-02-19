@@ -87,6 +87,18 @@ function HOPE_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'HOPE_scripts' );
 
+function my_enqueue_block_editor_assets() {
+    wp_enqueue_script(
+        'editor-script', // Handle for the script.
+        get_stylesheet_directory_uri() . '/dist/editor-script.js', // Path to the script file.
+        array( 'wp-blocks', 'wp-element', 'wp-editor' ), // Dependencies, include other WordPress scripts that your script depends on.
+        '1.0', // Version number for the script.
+        true // Set to true to enqueue the script in the footer.
+    );
+}
+add_action( 'enqueue_block_editor_assets', 'my_enqueue_block_editor_assets' );
+
+
 function enqueue_child_theme_styles() {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
 //     wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style'), '1.0.6', true);
