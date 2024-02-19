@@ -1,10 +1,13 @@
 const path = require('path');
 
 module.exports = {
-  entry: './js/script-editor.js', // Your main JavaScript file
+  entry: {
+    editor: './js/script-editor.js', // Your main JavaScript file
+    main: './js/script.js' // Another entry point (optional)
+  },
   output: {
     path: path.resolve(__dirname, 'dist'), // Output directory
-    filename: 'editor-script.js' // Output file
+    filename: '[name]-script.js' // Output file name (using [name] placeholder)
   },
   module: {
     rules: [

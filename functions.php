@@ -13,7 +13,7 @@ if ( ! defined( 'HOPE_VERSION' ) ) {
 	 * to create your production build, the value below will be replaced in the
 	 * generated zip file with a timestamp, converted to base 36.
 	 */
-	define( 'HOPE_VERSION', 'hope7' );
+	define( 'HOPE_VERSION', '1.8' );
 }
 
 
@@ -77,12 +77,12 @@ add_action( 'after_setup_theme', 'HOPE_setup' );
  */
 function HOPE_scripts() {
 	// wp_enqueue_style( 'hope-style', get_stylesheet_uri(), array(), HOPE_VERSION );
-	wp_enqueue_style( 'hope-style', get_stylesheet_uri(), array(), filemtime( get_template_directory() . '/style.css' ) ); // Main theme styles
+	// wp_enqueue_style( 'hope-style', get_stylesheet_uri(), array(), filemtime( get_template_directory() . '/style.css' ) ); // Main theme styles
 
 	wp_enqueue_style( 'open-sans', 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap', array(), null, 'all' ); // Google Font.
 	wp_enqueue_style( 'vollkorn', 'https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,700;1,400&display=swap', array(), null, 'all' ); // Google Font.
 
-	wp_enqueue_script( 'hope-script', get_stylesheet_directory_uri() . '/js/script.js', array(), HOPE_VERSION, true );
+	wp_enqueue_script( 'hope-script', get_stylesheet_directory_uri() . '/dist/main-script.js', array(), HOPE_VERSION, true );
 	wp_enqueue_script('jquery');
 }
 add_action( 'wp_enqueue_scripts', 'HOPE_scripts' );
@@ -101,7 +101,7 @@ add_action( 'enqueue_block_editor_assets', 'my_enqueue_block_editor_assets' );
 
 function enqueue_child_theme_styles() {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
-//     wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style'), '1.0.6', true);
+    wp_enqueue_style('hope-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style'), HOPE_VERSION);
 }
 add_action('wp_enqueue_scripts', 'enqueue_child_theme_styles');
 
