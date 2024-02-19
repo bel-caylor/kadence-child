@@ -7,8 +7,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production",
-    "watch": "webpack --mode development --watch",
+    "build": "npm run sass && webpack --mode production",
+    "watch": "npm-run-all --parallel sass watch-webpack",
+    "watch-webpack": "webpack --mode development --watch",
     "sass": "node-sass scss/style.scss style.css -w"
   },
   "keywords": [],

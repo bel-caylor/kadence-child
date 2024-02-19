@@ -1,0 +1,22 @@
+/* Hide the content initially */
+.sermon-blank {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    color: transparent; /* Hide the text */
+    border-bottom: var(--wp--preset--color--blue) 1px solid;
+    background-color: var(--wp--preset--color--blue-lt-2);
+    margin-inline: 5px;
+    padding-inline: 10px;
+}
+
+/* Show the content on hover */
+.sermon-blank:hover {
+    color: black; /* Change the text color to make it visible */
+}
+
+/* Show the content on click (optional) */
+.sermon-blank.visible {
+    color: black; /* Change the text color to make it visible */
+    outline: none; 
+}
