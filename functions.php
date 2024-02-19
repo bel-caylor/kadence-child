@@ -13,7 +13,7 @@ if ( ! defined( 'HOPE_VERSION' ) ) {
 	 * to create your production build, the value below will be replaced in the
 	 * generated zip file with a timestamp, converted to base 36.
 	 */
-	define( 'HOPE_VERSION', '1.8' );
+	define( 'HOPE_VERSION', '1.8.1' );
 }
 
 
@@ -137,6 +137,7 @@ function hope_acf_register_blocks() {
 				'supports'        => array(
 					'align'  => false,
 					'anchor' => false,
+					'mode' => 'edit',
 				),
 			)
 		);
