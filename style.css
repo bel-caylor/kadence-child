@@ -3,7 +3,7 @@
  Description: Child theme for Kadence
  Author: Belinda Caylor
  Template: kadence
- Version: 1.0.5
+ Version: 1.0.7
  */
 body {
   --global-kb-spacing-5xl: var(--wp--preset--spacing--112);
@@ -27,7 +27,8 @@ body {
   --global-kb-font-size-lg: var(--wp--preset--font-size--2-xl);
   --global-kb-font-size-xl: var(--wp--preset--font-size--3-xl);
   --global-kb-font-size-xxl: var(--wp--preset--font-size--4-xl);
-  --global-kb-font-size-xxxl: var(--wp--preset--font-size--6-xl); }
+  --global-kb-font-size-xxxl: var(--wp--preset--font-size--6-xl); 
+}
 
 body p, input, selec, optgroup, textarea {
   font-size: var(--wp--preset--font-size--large); }
@@ -35,13 +36,19 @@ body p, input, selec, optgroup, textarea {
 :where(.wp-site-blocks) > * {
   margin-block-start: 0 !important; }
 
+.hidden {
+  display: none; }
+
+@media (max-width: 767px) {
+  .kt-blocks-info-box-link-wrap .kt-blocks-info-box-media {
+    margin-right: 0 !important; } }
+
 .header .wp-block-navigation__responsive-container {
   bottom: unset;
   left: unset; }
 
-@media (max-width: 947px) {
-  .header.header-mobile .wp-block-site-logo {
-    max-width: 150px; } }
+.header.header-mobile .wp-block-site-logo {
+  max-width: 100px; }
 
 @media (min-width: 946px) and (max-width: 1075px) {
   .header ul.wp-block-navigation__container {
@@ -58,6 +65,11 @@ body p, input, selec, optgroup, textarea {
 .header.header-mobile > .kt-row-column-wrap {
   gap: 0; }
 
+.header-mobile {
+  display: none; }
+  .header-mobile.active {
+    display: block; }
+
 .header .wp-block-navigation__container {
   gap: 2rem; }
   .header .wp-block-navigation__container > .wp-block-navigation-item {
@@ -72,3 +84,54 @@ body p, input, selec, optgroup, textarea {
 
 .header div#modal-2-content {
   border: var(--wp--preset--color--blue-lt) 2px solid; }
+
+.accordion-top-lg .kt-blocks-accordion-header.kt-accordion-panel-active {
+  padding-top: 100px !important; }
+
+.kt-accordion-wrap > .kt-accordion-inner-wrap > .kt-accordion-pane > .kt-accordion-header-wrap {
+  margin-top: 2px; }
+
+.kt-accordion-wrap .wp-block-kadence-pane .kt-accordion-header-wrap .kt-blocks-accordion-header {
+  border-top: 0px solid #f2f2f2;
+  border-right: 0px solid #f2f2f2;
+  border-bottom: 0px solid #f2f2f2;
+  border-left: 0px solid #f2f2f2;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background: #005878;
+  font-size: var(--global-kb-font-size-md, 1.25rem);
+  color: #ffffff;
+  padding-top: 10px;
+  padding-right: 14px;
+  padding-bottom: 10px;
+  padding-left: 14px; }
+
+.kt-accordion-wrap .kt-accordion-header-wrap .kt-blocks-accordion-header:hover, body:not(.hide-focus-outline) .kt-accordion-id1405_f03602-3b .kt-accordion-header-wrap .kt-blocks-accordion-header:focus {
+  color: #ffffff;
+  background: #626262;
+  border-top-color: #eeeeee;
+  border-top-style: solid;
+  border-right-color: #eeeeee;
+  border-right-style: solid;
+  border-bottom-color: #eeeeee;
+  border-bottom-style: solid;
+  border-left-color: #eeeeee;
+  border-left-style: solid; }
+
+.kt-accordion-wrap .kt-accordion-header-wrap .kt-blocks-accordion-header.kt-accordion-panel-active {
+  color: #005878;
+  background: #E2E9EE;
+  border-top-color: #444444;
+  border-top-style: solid;
+  border-right-color: #444444;
+  border-right-style: solid;
+  border-bottom-color: #444444;
+  border-bottom-style: solid;
+  border-left-color: #444444;
+  border-left-style: solid; }
+
+.kt-accordion-wrap .kt-blocks-accordion-icon-trigger:after,
+.kt-accordion-wrap .kt-blocks-accordion-icon-trigger:before {
+  background-color: var(--wp--preset--color--background); }

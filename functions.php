@@ -13,7 +13,7 @@ if ( ! defined( 'HOPE_VERSION' ) ) {
 	 * to create your production build, the value below will be replaced in the
 	 * generated zip file with a timestamp, converted to base 36.
 	 */
-	define( 'HOPE_VERSION', 's0kzff' );
+	define( 'HOPE_VERSION', 'hope6' );
 }
 
 
@@ -54,10 +54,10 @@ if ( ! function_exists( 'HOPE_setup' ) ) :
 		// add_theme_support( 'customize-selective-refresh-widgets' );
 
 		// Add support for editor styles.
-		add_theme_support( 'editor-styles' );
+		add_theme_support( 'styles' );
 
 		// Enqueue editor styles.
-		add_editor_style( 'style-editor.css' );
+		add_editor_style( 'style.css' );
 
 		// Add support for responsive embedded content.
 		add_theme_support( 'responsive-embeds' );
@@ -77,18 +77,19 @@ add_action( 'after_setup_theme', 'HOPE_setup' );
  */
 function HOPE_scripts() {
 	// wp_enqueue_style( 'hope-style', get_stylesheet_uri(), array(), HOPE_VERSION );
-	// wp_enqueue_style( 'hope-style', get_stylesheet_uri(), array(), filemtime( get_template_directory() . '/style.css' ) ); // Main theme styles
+	wp_enqueue_style( 'hope-style', get_stylesheet_uri(), array(), filemtime( get_template_directory() . '/style.css' ) ); // Main theme styles
 
 	wp_enqueue_style( 'open-sans', 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap', array(), null, 'all' ); // Google Font.
 	wp_enqueue_style( 'vollkorn', 'https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,700;1,400&display=swap', array(), null, 'all' ); // Google Font.
 
-	wp_enqueue_script( 'hope-script', get_template_directory_uri() . '/js/script.min.js', array(), HOPE_VERSION, true );
+	wp_enqueue_script( 'hope-script', get_stylesheet_directory_uri() . '/js/script.js', array(), HOPE_VERSION, true );
+	wp_enqueue_script('jquery');
 }
 add_action( 'wp_enqueue_scripts', 'HOPE_scripts' );
 
 function enqueue_child_theme_styles() {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
-    wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style'));
+//     wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style'), '1.0.6', true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_child_theme_styles');
 
@@ -99,3 +100,34 @@ function be_reusable_blocks_admin_menu() {
     add_menu_page( 'Reusable Blocks', 'Reusable Blocks', 'edit_posts', 'edit.php?post_type=wp_block', '', 'dashicons-editor-table', 22 );
 }
 add_action( 'admin_menu', 'be_reusable_blocks_admin_menu' );
+
+/**
+ * Set up the ACF blocks
+ */
+function hope_acf_register_blocks() {
+	// Check function exists.
+	if ( function_exists( 'acf_register_block' ) ) {
+		acf_register_block_type(
+			array(
+				'name'            => 'songs',
+				'title'           => __( 'Worship Songs' ),
+				'description'     => __( 'Create accordion of worship songs.' ),
+				'render_template' => '/partials/block-song-accordion.php',
+				'category'        => 'hope',
+				'icon'            => array(
+					'background' => '#FF7800',
+					'foreground' => '#FFFFFF',
+					'src'        => 'list-view',
+				),
+				'keywords'        => array(
+					'songs',
+				),
+				'supports'        => array(
+					'align'  => false,
+					'anchor' => false,
+				),
+			)
+		);
+	}
+}
+add_action( 'acf/init', 'hope_acf_register_blocks' );
