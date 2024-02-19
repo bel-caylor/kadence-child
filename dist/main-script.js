@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("var sermonBlank = document.querySelector('.sermon-blank');\nsermonBlank.addEventListener('click', function () {\n  sermonBlank.classList.add('visible');\n});\n\n//# sourceURL=webpack://kadence-child/./js/script.js?");
+eval("document.addEventListener('DOMContentLoaded', function () {\n  var sermonBlanks = document.querySelectorAll('.sermon-blank');\n  sermonBlanks.forEach(function (span) {\n    span.addEventListener('click', function () {\n      span.classList.add('visible');\n    });\n  });\n});\n\n//# sourceURL=webpack://kadence-child/./js/script.js?");
 
 /***/ })
 
