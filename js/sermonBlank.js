@@ -3,7 +3,7 @@ const { BlockControls, RichTextToolbarButton } = wp.blockEditor;
 // const { ToolbarButton } = wp.components;
 
 //Registor Custom Format
-wp.richText.registerFormatType('sermonBlank/sermon-blank', {
+wp.richText.registerFormatType('my-custom-format/sermon-blank', {
     title: 'Sermon Blank',
     tagName: 'span',
     className: 'sermon-blank',
@@ -20,8 +20,9 @@ const CustomButton = (BlockEdit) => {
             <>
                 <BlockControls>
                     <RichTextToolbarButton 
-                        icon="download"
-                        label="Custom Button"
+                        icon="button"
+                        title="A Sermon Blank"
+                        priority={5}
                         onClick={() => {
                             const { replace, insert, create, toHTMLString, slice, applyFormat } = wp.richText;
                             const { getSelectedBlock } = wp.data.select('core/block-editor');
@@ -40,7 +41,7 @@ const CustomButton = (BlockEdit) => {
                                 const modifiedValue = applyFormat(
                                     richTextValue,
                                     {
-                                        type: 'sermonBlank/sermon-blank',
+                                        type: 'my-custom-format/sermon-blank',
                                     },
                                     start,
                                     end
@@ -67,3 +68,4 @@ const CustomButton = (BlockEdit) => {
 };
 
 addFilter('editor.BlockEdit', 'your-namespace', CustomButton);
+
