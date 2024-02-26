@@ -1,115 +1,47 @@
 
-// const { BlockControls, RichTextToolbarButton } = wp.blockEditor;
-// const { registerFormatType, toggleFormat } = wp.richText;
-// const { ToolbarGroup, ToolbarButton } = wp.components;
-// const { useSelect } = wp.data;
+const { BlockControls, useBlockEditorState } = wp.blockEditor;
+const { registerFormatType, toggleFormat } = wp.richText;
+const { ToolbarGroup, ToolbarButton } = wp.components;
+const { useSelect } = wp.data;
 
-// const TranslationButton = ( { isActive, onChange, value } ) => {
-//     const { postType } = useSelect( ( select ) => {
-//         return { postType: select( 'core/editor' ).getCurrentPostType() };
-//       }, [] );
-
-//     if ( postType === 'song' ) {
-//         return (
-//             <BlockControls>
-//                 <ToolbarGroup>
-//                     <ToolbarButton
-//                         icon="translation"
-//                         title="Translation"
-//                         onClick={ () => {
-//                             onChange(
-//                                 toggleFormat( value, {
-//                                     type: 'my-custom-format/translation',
-//                                 } )
-//                             );
-//                         } }
-//                         isActive={ isActive }
-//                     />
-//                 </ToolbarGroup>
-//             </BlockControls>
-//         );
-//     } else {
-//         return null;
-//     }
-//     };
-    
-// registerFormatType( 'my-custom-format/translation', {
-//     title: 'Translation',
-//     tagName: 'span',
-//     className: 'translation',
-//     edit: TranslationButton,
-// } );
-
-
-
-const { addFilter } = wp.hooks;
-const { BlockControls, RichTextToolbarButton } = wp.blockEditor;
-// const { ToolbarButton } = wp.components;
-
-//Registor Custom Format
-wp.richText.registerFormatType('my-custom-format/sermon-blank', {
-    title: 'Sermon Blank',
-    tagName: 'span',
-    className: 'sermon-blank',
-});
-
-const CustomButton = (BlockEdit) => {
-    return (props) => {
-        // Only add the button to the paragraph block
-        if (props.name !== 'core/paragraph' && props.name !== 'core/list') {
-            return <BlockEdit {...props} />;
-        }
-
-        return (
-            <>
-                <BlockControls>
-                    <RichTextToolbarButton 
-                        icon="button"
-                        title="A Sermon Blank"
-                        priority={5}
-                        onClick={() => {
-                            const { replace, insert, create, toHTMLString, slice, applyFormat } = wp.richText;
-                            const { getSelectedBlock } = wp.data.select('core/block-editor');
-                        
-                            const selectedBlock = getSelectedBlock();
-                            // console.log(selectedBlock);
-                            if (selectedBlock && selectedBlock.attributes.content) {
-                                let start = wp.data.select('core/block-editor').getSelectionStart();
-                                let end = wp.data.select('core/block-editor').getSelectionEnd();
-                                start = start.offset;
-                                end = end.offset;
-
-                                const richTextValue = create({ html: selectedBlock.attributes.content });
-                                
-                                // Apply the format to the selected text
-                                const modifiedValue = applyFormat(
-                                    richTextValue,
-                                    {
-                                        type: 'my-custom-format/sermon-blank',
-                                    },
-                                    start,
-                                    end
-                                );
-                            
-                                // Convert the modified value back to HTML
-                                const modifiedContent = toHTMLString({ value: modifiedValue });
-                            
-                                // Update the block's content
-                                wp.data.dispatch('core/block-editor').updateBlockAttributes(
-                                    selectedBlock.clientId,
-                                    { content: modifiedContent }
-                                );
-
-
-                            }
-                        }}
-                    />
-                </BlockControls>
-                <BlockEdit {...props} />
-            </>
-        );
+const sermonBlankButton = ( { isActive, onChange, value } ) => {
+  const { postType, selectedBlock } = useSelect( ( select ) => {
+    return {
+      postType: select( 'core/editor' ).getCurrentPostType(),
+      selectedBlock: select( 'core/block-editor' ).getSelectedBlock(),
     };
+  }, [] );
+
+  console.log(selectedBlock);
+
+  if ( postType === 'sermon' && ( selectedBlock.name === 'core/paragraph' || selectedBlock.name === 'core/list-item')) {
+    return (
+      <BlockControls>
+        <ToolbarGroup>
+          <ToolbarButton
+            icon="button"
+            title="Sermon Blank"
+            onClick={ () => {
+              onChange(
+                toggleFormat( value, {
+                  type: 'my-custom-format/sermon-blank',
+                } )
+              );
+            } }
+            isActive={ isActive }
+          />
+        </ToolbarGroup>
+      </BlockControls>
+    );
+  } else {
+    return null;
+  }
 };
 
-addFilter('editor.BlockEdit', 'your-namespace', CustomButton);
+registerFormatType( 'my-custom-format/sermon-blank', {
+  title: 'Sermon Blank',
+  tagName: 'span',
+  className: 'sermon-blank',
+  edit: sermonBlankButton,
+} );
 
