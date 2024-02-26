@@ -1,1 +1,2 @@
 import './sermonBlank';
+import './translation';
