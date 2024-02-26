@@ -96,15 +96,18 @@ body p, input, selec, optgroup, textarea {
   /* Change the text color to make it visible */
   outline: none; }
 
-.song-accordion .kt-accordion-panel-inner p {
+.song-accordion .kt-accordion-panel-inner p,
+.single-song .single-content p {
   margin-bottom: 15px;
   line-height: 1.1;
   font-weight: 600; }
 
-.song-accordion .kt-accordion-panel-inner span.translation {
+.song-accordion .kt-accordion-panel-inner span.translation,
+.single-song .single-content span.translation {
   color: var(--wp--preset--color--blue);
   font-style: italic;
   font-weight: 300; }
 
-.song-accordion .kt-accordion-panel-inner .wp-block-group {
+.song-accordion .kt-accordion-panel-inner .wp-block-group,
+.single-song .single-content .wp-block-group {
   margin-bottom: var(--global-lg-spacing); }

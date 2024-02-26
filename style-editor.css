@@ -1,0 +1,12 @@
+.post-type-song p {
+  margin-bottom: 15px;
+  line-height: 1.1;
+  font-weight: 600; }
+
+.post-type-song span.translation {
+  color: var(--wp--preset--color--blue);
+  font-style: italic;
+  font-weight: 300; }
+
+.post-type-song .wp-block-group {
+  margin-bottom: var(--global-lg-spacing); }

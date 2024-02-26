@@ -98,6 +98,15 @@ function my_enqueue_block_editor_assets() {
 }
 add_action( 'enqueue_block_editor_assets', 'my_enqueue_block_editor_assets' );
 
+function HOPE_editor_styles() {
+    $screen = get_current_screen();
+    if ( method_exists( $screen, 'is_block_editor' ) && $screen->is_block_editor() ) {
+        wp_enqueue_style( 'hope-editor-style', get_theme_file_uri( 'style-editor.css' ), false, '1.0', 'all' );
+    }
+}
+add_action( 'admin_enqueue_scripts', 'HOPE_editor_styles' );
+
+
 
 function enqueue_child_theme_styles() {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');

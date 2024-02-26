@@ -1,16 +1,14 @@
 {
-  "dependencies": {
-    "node-sass": "^9.0.0"
-  },
   "name": "kadence-child",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run sass && webpack --mode production",
-    "watch": "npm-run-all --parallel sass watch-webpack",
+    "watch": "npm-run-all --parallel sass sass-editor watch-webpack",
     "watch-webpack": "webpack --mode development --watch",
-    "sass": "node-sass scss/style.scss style.css -w"
+    "sass": "node-sass scss/style.scss style.css -w",
+    "sass-editor": "node-sass scss/style-editor.scss style-editor.css -w"
   },
   "keywords": [],
   "author": "Belinda Caylor",
@@ -21,6 +19,7 @@
     "@babel/preset-env": "^7.23.9",
     "@babel/preset-react": "^7.23.3",
     "babel-loader": "^9.1.3",
+    "node-sass": "^9.0.0",
     "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4"
   }
