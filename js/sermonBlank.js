@@ -12,8 +12,8 @@ wp.richText.registerFormatType('my-custom-format/sermon-blank', {
 const CustomButton = (BlockEdit) => {
     return (props) => {
         // Only add the button to the paragraph block
-        if (props.name !== 'core/paragraph') {
-            return <BlockEdit {...props} />;
+        if (props.name !== 'core/paragraph' && props.name !== 'core/list-item') {
+           return <BlockEdit {...props} />;
         }
 
         return (
@@ -28,7 +28,7 @@ const CustomButton = (BlockEdit) => {
                             const { getSelectedBlock } = wp.data.select('core/block-editor');
                         
                             const selectedBlock = getSelectedBlock();
-                            // console.log(selectedBlock);
+                            console.log(selectedBlock);
                             if (selectedBlock && selectedBlock.attributes.content) {
                                 let start = wp.data.select('core/block-editor').getSelectionStart();
                                 let end = wp.data.select('core/block-editor').getSelectionEnd();
