@@ -1,5 +1,5 @@
 <?php
-$accordion_items = get_field('songs');;
+$accordion_items = get_field('songs');
 ?>
 <div class="wp-block-kadence-accordion alignnone song-accordion">
     <div class="kt-accordion-wrap kt-accordion-has-3-panes kt-active-pane-0 kt-accordion-block kt-pane-header-alignment-left kt-accodion-icon-style-arrow kt-accodion-icon-side-left" style="max-width:none">

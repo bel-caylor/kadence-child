@@ -1,0 +1,8 @@
+.kb-advanced-slide-inner > a {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+}
+.kb-advanced-slide-inner .social-share {
+    display: none;
+}

@@ -1,0 +1,31 @@
+{
+    "name": "acf/adverts",
+    "title": "Advert Slider",
+    "description": "A Slider with active adverts.",
+    "style": [ 
+        "file:../../../plugins/kadence-blocks/dist/style-blocks-advancedbtn.css",
+        "file:../../../plugins/kadence-blocks/dist/style-blocks-advanced-form.css",
+        "file:../../../plugins/kadence-blocks-pro/dist/style-blocks-slider.css",
+        "file:../../../plugins/kadence-blocks/includes/assets/css/kadence-splide.min.css",
+        "file:../../../plugins/kadence-blocks-pro/includes/assets/css/aos.min.css",
+        "file:../../../plugins/kadence-blocks-pro/dist/style-blocks-modal.css",
+        "file:./advert-style.css"
+     ],
+    "script": [
+        "file:../../../plugins/kadence-blocks/includes/assets/js/kb-advanced-form-block.min.js",
+        "file:../../../plugins/kadence-blocks/includes/assets/js/splide.min.js",
+        "file:../../../plugins/kadence-blocks-pro/includes/assets/js/kb-splide-slider-init.min.js",
+        "file:../../../plugins/kadence-blocks-pro/includes/assets/js/aos.min.js",
+        "file:../../../plugins/kadence-blocks-pro/includes/assets/js/kt-modal-init.min.js"
+    ],
+    "category": "formatting",
+    "icon": "share",
+    "keywords": ["slider", "advert"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "advert-slider.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}
