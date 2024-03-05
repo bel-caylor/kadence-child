@@ -6,7 +6,8 @@
 .post-type-song span.translation {
   color: var(--wp--preset--color--blue);
   font-style: italic;
-  font-weight: 300; }
+  font-weight: 300;
+  display: block; }
 
 .post-type-song .wp-block-group {
   margin-bottom: var(--global-lg-spacing); }

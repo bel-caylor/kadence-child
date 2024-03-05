@@ -13,7 +13,7 @@ if ( ! defined( 'HOPE_VERSION' ) ) {
 	 * to create your production build, the value below will be replaced in the
 	 * generated zip file with a timestamp, converted to base 36.
 	 */
-	define( 'HOPE_VERSION', '1.8.2' );
+	define( 'HOPE_VERSION', '1.9.0' );
 }
 
 
@@ -150,6 +150,104 @@ function hope_acf_register_blocks() {
 				),
 			)
 		);
+		// acf_register_block_type(
+		// 	array(
+		// 		'name'            => 'adverts',
+		// 		'title'           => __( 'Advert Slider' ),
+		// 		'description'     => __( 'Slider with active adverts' ),
+		// 		'render_template' => '/partials/block-advert-slider.php',
+		// 		'category'        => 'hope',
+		// 		'icon'            => array(
+		// 			'background' => '#FF7800',
+		// 			'foreground' => '#FFFFFF',
+		// 			'src'        => 'share',
+		// 		),
+		// 		'keywords'        => array(
+		// 			'advert',
+		// 			'slider',
+		// 		),
+		// 		'supports'        => array(
+		// 			'align'  => false,
+		// 			'anchor' => false,
+		// 			'mode' => 'edit',
+		// 		),
+		// 		'enqueue_assets' => function () {
+		// 			wp_enqueue_style('adverts-slider-style', site_url() . '/wp-content/plugins/kadence-blocks-pro/dist/style-blocks-slider.css');
+		// 			wp_enqueue_script('adverts-slider-script', site_url() . '/wp-content/plugins/kadence-blocks-pro/includes/assets/js/kb-splide-slider-init.min.js', array('jquery'), '1.0', true);
+		// 		},
+		// 	)
+		// );
+
+		
 	}
 }
 add_action( 'acf/init', 'hope_acf_register_blocks' );
+
+
+/**
+ * Register Custom Blocks
+ * @link https://developer.wordpress.org/reference/functions/register_block_type/
+ */
+function kadence_child_register_acf_blocks() {
+    register_block_type( __DIR__ . '/blocks/adverts' );
+}
+add_action( 'init', 'kadence_child_register_acf_blocks' );
+function hope_custom_block_enqueue_assets() {
+	if (has_block('acf/adverts')) {
+		wp_enqueue_style('adverts-blocks-advancedbtn', site_url() . '/wp-content/plugins/kadence-blocks/dist/style-blocks-advancedbtn.css');
+		wp_enqueue_style('adverts-blocks-advanced-form', site_url() . '/wp-content/plugins/kadence-blocks/dist/style-blocks-advanced-form.css');
+		wp_enqueue_style('adverts-blocks-slider', site_url() . '/wp-content/plugins/kadence-blocks-pro/dist/style-blocks-slider.css');
+		wp_enqueue_style('adverts-kadence-splide', site_url() . '/wp-content/plugins/kadence-blocks/includes/assets/css/kadence-splide.min.css');
+		wp_enqueue_style('adverts-aos', site_url() . '/wp-content/plugins/kadence-blocks-pro/includes/assets/css/aos.min.css');
+		wp_enqueue_style('adverts-blocks-modal', site_url() . '/wp-content/plugins/kadence-blocks-pro/dist/style-blocks-modal.css');
+		// wp_enqueue_style('adverts-style', get_template_directory_uri() . 'blocks/adverts/style.css');
+		wp_enqueue_script('adverts-kb-advanced-form-block', site_url() . '/wp-content/plugins/kadence-blocks/includes/assets/js/kb-advanced-form-block.min.js', array('jquery'), '1.0', true);
+		wp_enqueue_script('adverts-splide', site_url() . '/wp-content/plugins/kadence-blocks/includes/assets/js/splide.min.js', array('jquery'), '1.0', true);
+		wp_enqueue_script('adverts-kb-splide-slider-init', site_url() . '/wp-content/plugins/kadence-blocks-pro/includes/assets/js/kb-splide-slider-init.min.js', array('jquery'), '1.0', true);
+		wp_enqueue_script('adverts-aos', site_url() . '/wp-content/plugins/kadence-blocks-pro/includes/assets/js/aos.min.js', array('jquery'), '1.0', true);
+		wp_enqueue_script('adverts-kt-modal-init', site_url() . '/wp-content/plugins/kadence-blocks-pro/includes/assets/js/kt-modal-init.min.js', array('jquery'), '1.0', true);
+	}
+}
+add_action('enqueue_block_assets', 'hope_custom_block_enqueue_assets');
+
+
+/**
+ * Set up Google Analytics
+ */
+function add_google_analytics_code() {
+    ?>
+    <!-- Google Analytics tracking code -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BD069F7CV1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BD069F7CV1');
+    </script>
+    <?php
+}
+add_action('wp_head', 'add_google_analytics_code');
+
+/**
+ * Remove Podcasting from admin
+ */
+add_action( 'admin_menu', 'remove_custom_post_type' );
+function remove_custom_post_type() {
+    remove_menu_page( 'edit.php?post_type=podcast' );
+}
+add_action( 'admin_bar_menu', 'remove_custom_post_type_menu_bar', 999 );
+function remove_custom_post_type_menu_bar( $wp_admin_bar ) {
+    $wp_admin_bar->remove_node( 'new-podcast' );
+}
+
+/**
+ * Remove Posts from admin
+ */
+add_action( 'admin_menu', 'remove_default_post_type' );
+function remove_default_post_type() {
+    remove_menu_page( 'edit.php' );
+}
+add_action( 'admin_bar_menu', 'remove_default_post_type_menu_bar', 999 );
+function remove_default_post_type_menu_bar( $wp_admin_bar ) {
+    $wp_admin_bar->remove_node( 'new-post' );
+}

@@ -3,7 +3,7 @@
  Description: Child theme for Kadence
  Author: Belinda Caylor
  Template: kadence
- Version: 1.0.7
+ Version: 1.9.0
  */
 body {
   --global-kb-spacing-5xl: var(--wp--preset--spacing--112);
@@ -106,7 +106,8 @@ body p, input, selec, optgroup, textarea {
 .single-song .single-content span.translation {
   color: var(--wp--preset--color--blue);
   font-style: italic;
-  font-weight: 300; }
+  font-weight: 300;
+  display: block; }
 
 .song-accordion .kt-accordion-panel-inner .wp-block-group,
 .single-song .single-content .wp-block-group {
