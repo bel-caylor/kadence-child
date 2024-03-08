@@ -10,4 +10,15 @@
   display: block; }
 
 .post-type-song .wp-block-group {
-  margin-bottom: var(--global-lg-spacing); }
+  margin-bottom: var(--global-lg-spacing); 
+}
+.wp-block-acf-adverts > div {
+  margin-inline: auto;
+}
+.wp-block-acf-adverts > div:not(.kb-advanced-slider) {
+    max-width: 90%;
+    max-width: 700px;
+}
+.wp-block-acf-adverts > div.kb-advanced-slider {
+  max-width: 90%;
+}

@@ -1,10 +1,28 @@
 
 <?php
-$advert_posts = get_field('advert');
-$advert_lenght = count($advert_posts);
+$selection_type = get_field('selection_type');
+if ($selection_type === 'tag') {
+    $term_id = get_field('tag');
+    $args = array(
+        'post_type' => 'advert',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'category', // Replace with your actual taxonomy name
+                'field'    => 'term_id', // Use 'slug' or 'term_id' based on your taxonomy setup
+                'terms'    => $term_id ,
+            ),
+        ),
+    );
+
+    $advert_posts = new WP_Query($args);
+    $advert_posts = $advert_posts->posts;
+} else {
+    $advert_posts = get_field('advert');
+}
 // echo '<pre>';
-// var_dump($advert_items);
+// var_dump($advert_posts);
 // echo '</pre>';
+$advert_lenght = count($advert_posts);
 ?>
 <div class="kb-advanced-slider kb-advanced-slider-1809_3b317c-04 wp-block-kadence-slider">
     <div class="kb-advanced-slider-inner-contain kb-adv-slider-html-version-2">
@@ -74,3 +92,4 @@ $advert_lenght = count($advert_posts);
         </div>
     </div>
 </div>
+

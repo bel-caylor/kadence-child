@@ -3,14 +3,45 @@
     "title": "Block: Advert Slider",
     "fields": [
         {
+            "key": "field_65eb2bf492fd7",
+            "label": "Advert Selection Type",
+            "name": "selection_type",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Select Adverts to display in Advert Slider.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "individual": "Individual",
+                "tag": "By Tag"
+            },
+            "default_value": "individual",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
             "key": "field_65e774e735d4a",
-            "label": "advert",
+            "label": "Select Adverts Individually",
             "name": "advert",
             "aria-label": "",
             "type": "relationship",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65eb2bf492fd7",
+                        "operator": "==",
+                        "value": "individual"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -34,6 +65,39 @@
             "elements": "",
             "bidirectional": 0,
             "bidirectional_target": []
+        },
+        {
+            "key": "field_65eb2cce92fd8",
+            "label": "By Taxonomy Tax",
+            "name": "tag",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65eb2bf492fd7",
+                        "operator": "==",
+                        "value": "tag"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "category",
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "field_type": "radio",
+            "allow_null": 0,
+            "bidirectional": 0,
+            "multiple": 0,
+            "bidirectional_target": []
         }
     ],
     "location": [
@@ -54,5 +118,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1709667693
+    "modified": 1709915609
 }
