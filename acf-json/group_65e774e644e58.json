@@ -3,6 +3,29 @@
     "title": "Block: Advert Slider",
     "fields": [
         {
+            "key": "field_65eb419edc8a4",
+            "label": "Display Type",
+            "name": "display_type",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "individual": "Individual",
+                "slider": "Slider"
+            },
+            "default_value": "slider",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
             "key": "field_65eb2bf492fd7",
             "label": "Advert Selection Type",
             "name": "selection_type",
@@ -118,5 +141,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1709915609
+    "modified": 1709916652
 }
