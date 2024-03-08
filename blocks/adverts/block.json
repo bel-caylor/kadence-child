@@ -22,7 +22,7 @@
     "icon": "share",
     "keywords": ["slider", "advert"],
     "acf": {
-        "mode": "preview",
+        "mode": "edit",
         "renderTemplate": "advert-slider.php"
     },
     "supports": {

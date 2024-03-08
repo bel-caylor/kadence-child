@@ -1,6 +1,10 @@
 <?php
 $accordion_items = get_field('songs');
 ?>
+<div class="song-accordion-heading">
+    <h2>Songs</h2>
+    <button id="toggleButton">Toggle Translation</button>
+</div>
 <div class="wp-block-kadence-accordion alignnone song-accordion">
     <div class="kt-accordion-wrap kt-accordion-has-3-panes kt-active-pane-0 kt-accordion-block kt-pane-header-alignment-left kt-accodion-icon-style-arrow kt-accodion-icon-side-left" style="max-width:none">
         <div class="kt-accordion-inner-wrap kt-accordion-initialized" data-allow-multiple-open="true" data-start-open="none">
@@ -42,3 +46,31 @@ $accordion_items = get_field('songs');
         </div>
     </div>
 </div>
+<style>
+    .translation.hidden {
+        display: none !important;
+    }
+    .song-accordion-heading {
+        display: flex;
+        justify-content: space-between;
+    }
+    .song-accordion-heading button {
+        background: transparent;
+        color: var(--wp--preset--color--blue);
+        padding: 0;
+        font-size: 20px;
+        text-decoration: underline;
+        text-transform: capitalize;
+    }
+</style>
+<script>
+    /*
+    ** Toggle Translation Button
+    */
+    jQuery(document).ready(function() {
+        jQuery("#toggleButton").click(function() {
+            var elementsToToggle = jQuery(".translation");
+            elementsToToggle.toggleClass("hidden");
+        });
+    });
+</script>

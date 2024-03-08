@@ -2,6 +2,8 @@
     position: absolute;
     inset: 0;
     z-index: 10;
+    width: 85%;
+    margin-inline: auto;
 }
 .kb-advanced-slide-inner .social-share {
     display: none;
